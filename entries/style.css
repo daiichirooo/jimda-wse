@@ -1,0 +1,89 @@
+body{
+    background-color: #D4BA97;
+}
+
+.center{
+    text-align: center;
+}
+
+.first-sentenses{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    color: whitesmoke;
+    margin: 420px 0;
+}
+
+.lead{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 21px;
+    color: whitesmoke;
+    margin: 120px 0;
+}
+
+
+.main-nav{
+  display: flex;                      /* ← flex レイアウト */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 24px 16px;
+  margin-bottom: 40px;
+}
+
+.main-nav a{
+  font-family: "Open Sans", system-ui, sans-serif;
+  font-size: 18px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: whitesmoke;
+  border-radius: 999px;
+  padding: 8px 18px;
+  border: 1px solid rgba(255,255,255,.6);
+  transition: background .3s ease, color .3s ease, border-color .3s ease;
+}
+
+.main-nav a:hover{
+  background: rgba(255,255,255,.85);
+  color: #333;
+  border-color: rgba(255,255,255,1);
+}
+
+
+
+
+
+
+/* .nav-table {
+  width: 80%;
+  margin: 0 auto; 
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.nav-table td {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.nav-link {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 21px;
+  color: whitesmoke;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  padding: 8px 18px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.4s ease; 
+  background: transparent;
+}
+
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.7); 
+  color: #D4BA97;                        
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+} */

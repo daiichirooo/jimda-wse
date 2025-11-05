@@ -1,0 +1,73 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+html, body {
+  height: 100%;
+}
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #000;
+  font-family: system-ui, -apple-system, "Open Sans", Arial, sans-serif;
+  color: #fff;
+  position: relative;
+}
+
+
+.bg {
+  position: fixed;
+  inset: 0;             
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;    
+  object-position: bottom center;
+  pointer-events: none;   
+  z-index: 0;
+  user-select: none;
+}
+
+
+.words-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;    
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: #fff;
+
+  text-shadow:
+    0 0 6px rgba(0,0,0,.6),
+    0 4px 18px rgba(0,0,0,.7);
+  font-size: clamp(14px, 1.2vw, 20px);
+  line-height: 1.4;
+}
+
+.word {
+  position: absolute;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+
+
+.w1 { top: 15%; left: 20%; }
+.w2 { top: 30%; left: 65%; }
+.w3 { top: 55%; left: 12%; }
+.w4 { top: 70%; left: 40%; }
+.w5 { top: 18%; left: 75%; }
+.w6 { top: 80%; left: 68%; }
+.w7 { top: 42%; left: 33%; }
+.w8 { top: 85%; left: 33%; }
+.w9 { top: 17%; left: 45%; }
+.w10 { top: 60%; left: 80%; }

@@ -1,0 +1,123 @@
+:root{
+  --box-w: 220px;
+  --box-h: 130px;
+  --blur: 4px;
+  --fg: #fff;
+}
+
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+html, body { height: 100%; }
+body{
+  position: relative;
+  height: 100vh;           
+  background: #0b0f0e;     
+  color: var(--fg);
+  font-family: "FoundrySans","Open Sans",system-ui,sans-serif;
+  overflow: hidden;         
+}
+
+
+.bg{
+  position: fixed;
+  inset: 0;             
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;      
+  object-position: center bottom; 
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+.stage{
+  position: fixed;    
+  inset: 0;
+  z-index: 1;
+}
+
+
+.box{
+  position: absolute;
+  width: var(--box-w);
+  height: var(--box-h);
+  display: flex;
+  align-items: center;    
+  justify-content: center;  
+  text-align: center;
+  padding: 10px;
+  border-radius: 12px;
+
+}
+
+
+.scroller{
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 6px; 
+  scroll-snap-type: y proximity;
+  mask-image: linear-gradient(to bottom,
+                transparent, black 14%, black 86%, transparent);
+}
+
+.line{
+  scroll-snap-align: start;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--fg);
+  text-shadow:
+    0 0 8px rgba(0,0,0,.55),
+    0 2px 12px rgba(0,0,0,.45);
+}
+
+
+.tl{ left: 30%; top: 9%; }
+.tr{ right: 6%; top: 22%; }
+.bl{ left: 7%; bottom: 18%; }   
+.br{ left: 52%; bottom: 6%; }   
+
+
+.center-title{
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: clamp(18px, 3.2vw, 24px);
+  font-weight: 800;
+  letter-spacing: .06em;
+  color: #f2f2f2;
+  padding: 8px 14px;
+  text-shadow: 0 2px 10px rgba(0,0,0,.95), 0 0 1px rgba(0,0,0,.8);
+}
+
+
+
+@media (max-width: 840px){
+  :root{
+    --box-w: 180px;
+    --box-h: 110px;
+    --blur: 5px;
+  }
+  .tl{ left: 5%;  top: 67%; }
+  .tr{ right:5%;  top: 18%; }
+  .bl{ left: 8%;  top: 10%; }
+  .br{ left: 54%; top: 58%; }
+
+  .center-title{
+    font-size: 18px;
+    padding: 6px 10px;
+  }
+}
+
+
+@media (max-width: 700px){
+  :root{
+    --box-w: 160px;
+    --box-h: 100px;
+  }
+  .nav{ height: 48px; }
+  .stage{ min-height: calc(100dvh - 48px); }
+}

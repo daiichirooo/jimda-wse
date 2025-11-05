@@ -1,0 +1,138 @@
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+}
+  
+.wrapper > * {
+    flex: 1 100%;
+}
+  
+.main {
+    border: 10px solid deepskyblue;
+}
+  
+.aside {
+    border: 10px solid red;
+}
+  
+.song{
+    border: 10px solid limegreen;
+}
+  
+.nav{
+    border: 10px solid lavender;
+}
+  
+/* for mobile */
+@media all and (max-width: 800px) {
+    .nav{
+      display: flex;
+      order: 1;
+      height: 10%;
+      justify-content: center;
+      align-items: center;
+      font-style: bold;
+      font-size: 1em;
+      color: pink;
+    }
+    
+    .song {
+      display: flex;
+      order: 2;
+      height: 100px;
+      border: 10px solid limegreen;
+      justify-content: center;
+      align-items: center;
+      font-style: italic;
+      font-size: 2em;
+      color: blue;
+    }
+    
+    .main {
+      display: flex;
+      order: 3;
+      font-family: sans-serif;
+      text-align: left;
+      font-size: 1.2em;
+      font-weight: bold;
+      padding: 1em;
+    }
+  
+    .aside{
+      display: flex;
+      order: 4;
+      font-family: serif;
+      padding: 1em;
+      font-size: 1em;
+    }
+}
+  
+  
+  
+/* for large screens */
+  
+@media all and (min-width: 801px) {
+    .main {
+      /* this says MAIN TAKES UP 3 COLUMNS > change this number to change width   */
+      flex: 3;
+      
+      /* this says MAIN IS 1st IN ORDER */
+      order: 1;
+      
+      /*  this is all your font styling and positioning for MAIN    */
+      font-family: sans-serif;
+      text-align: left;
+      font-size: 4em;
+      font-weight: bold;
+      padding-left: 3em;
+      padding-top: 3em;
+      padding-right: 1em;
+    }
+  
+    .aside {
+      /* this says ASIDE TAKES UP 1 COLUMN > change this number to change width   */
+      flex: 1;
+      
+      /* this says ASIDE IS 2ND ORDER */
+      order: 2;
+     
+      /* this is all of the font styling and padding for ASIDE   */
+      font-family: serif;
+      padding: 1em;
+      font-size: 2em;
+    }
+    
+    .song {
+      display: flex;
+      order: 3;
+      width: 50%;
+      height: 100px;
+      border: 10px solid limegreen;
+      justify-content: center;
+      align-items: center;
+      font-style: italic;
+      font-size: 2em;
+      color: red;
+    }
+  
+    .fixed {
+      position: fixed;
+      bottom: 15%;
+    }
+  
+    .nav{
+      display: flex; 
+      order: 4;
+      position: fixed;
+      bottom: 0px;
+      height: 5%;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      font-style: bold;
+      font-size: 1.5em;
+      color: pink;
+    }
+    
+}
+  

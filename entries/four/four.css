@@ -1,0 +1,86 @@
+:root{
+  --bg: #304c34;      
+  --gap: 28px;  
+  --radius: 12px;
+  --shadow: 0 14px 36px rgba(0,0,0,.30);
+  --hover-scale: 1.06;
+  --text: #f4f4f4;
+}
+
+*{ box-sizing: border-box; }
+html,body{ 
+    height:100%; 
+    margin:0; 
+    overflow: hidden;
+}
+body{ 
+    background:var(--bg); 
+    font-family: "Kaisei Decol", serif;
+ }
+
+
+.collage{
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  aspect-ratio: 16/9;
+  margin: 0;
+  padding: var(--pad);
+}
+
+
+.photo{
+  margin:0;
+  position:absolute;
+  overflow:hidden;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  will-change: transform;
+  transition: transform .35s cubic-bezier(.2,.6,.2,1), box-shadow .35s ease;
+}
+.photo img{
+  width:100%; 
+  height:100%;
+  object-fit:cover; 
+  display:block;
+}
+
+
+.photo:hover, .photo:focus-within{
+  transform: scale(var(--hover-scale));
+  z-index: 99;
+  box-shadow: 0 20px 50px rgba(0,0,0,.34);
+}
+
+
+.z1{ z-index:1 } .z2{ z-index:2 } .z3{ z-index:3 } .z4{ z-index:4 } .z5{ z-index:5 }
+
+
+.p1{ left: 2%;  top:  3%; width: 38%; height: 80%; }
+.p2{ left: 10%; top: 10%; width: 42%; height: 18%; }
+.p3{ left: 46%; top:  7%; width: 36%; height: 30%; }
+.p4{ left: 38%; top: 35%; width: 25%; height: 28%; }
+.p5{ right:3%;  top:  3%; width: 28%; height: 46%; }
+.p6{ left:65%;  top: 42%; width: 20%; height: 30%; }
+.p7{ left: 42%; top: 64%; width: 28%; height: 30%; }
+.p8{ left: 20%; top: 78%; width: 25%; height: 15%; }
+.p9{ left: 3%; top: 70%; width: 24%; height: 26%; }
+
+.labels{
+  position: fixed;
+  right: 7%;
+  bottom: 10%;
+  color: #f2f2f2;
+  text-align: right;
+  line-height: 1.5;
+  pointer-events: none;     
+}
+.labels .jp{
+  font-size: 14px;
+  opacity: .9;
+  margin-bottom: 6px;
+}
+.labels .en{
+  font-size: 12px;
+  opacity: .85;
+}
