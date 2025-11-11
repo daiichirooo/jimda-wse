@@ -1,0 +1,210 @@
+/* ===== ベース ===== */
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body{
+  height: 100%;
+}
+
+body{
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Open Sans", sans-serif;
+  color: #f5f5f5;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.25), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(0,0,0,0.9), #050509 80%);
+  overflow: hidden;
+}
+
+/* ===== ナビ（flex） ===== */
+.site-header{
+  padding: 14px 24px 6px;
+  position: relative;
+  z-index: 5;
+}
+
+.main-nav{
+  display: flex;                  /* flex① */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+}
+
+.main-nav a{
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #f5f5f5;
+  background: rgba(5,5,12,0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.main-nav a:hover{
+  background: #f5f5f5;
+  color: #15151d;
+  border-color: #f5f5f5;
+}
+
+.main-nav a[aria-current="page"]{
+  background: rgba(255,255,255,0.18);
+}
+
+/* ===== シーン（3D空間） ===== */
+.scene{
+  display: flex;                  /* flex② */
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: calc(100vh - 60px);
+  padding: 16px;
+  perspective: 1200px;            /* 3D の奥行き */
+}
+
+/* 中央テキスト */
+.center-copy{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 420px;
+  padding: 16px;
+}
+
+.center-copy h1{
+  font-size: clamp(24px, 4vw, 40px);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-shadow:
+    0 0 18px rgba(0,0,0,0.9),
+    0 0 32px rgba(0,0,0,1);
+}
+
+.center-copy p{
+  font-size: 14px;
+  line-height: 1.9;
+  letter-spacing: .03em;
+  max-width: 36ch;
+  margin: 0 auto;
+  color: #dfdfdf;
+  text-shadow:
+    0 0 12px rgba(0,0,0,0.85),
+    0 0 24px rgba(0,0,0,0.95);
+}
+
+/* ===== 香りのチップ雲 ===== */
+.cloud{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;           /* 中央テキストをクリックできるように */
+  transform-style: preserve-3d;
+}
+
+/* 共通チップ */
+.chip{
+  position: absolute;
+  min-width: 120px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 20% 0%, #ffffff, #9bf0ff 45%, #3c6fe9 100%);
+  box-shadow:
+    0 0 25px rgba(155,240,255,0.8),
+    0 12px 40px rgba(0,0,0,0.7);
+  color: #021220;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+
+  opacity: 0.9;
+  transform-style: preserve-3d;
+  transform-origin: center;
+
+  pointer-events: auto;           /* hoverできるように戻す */
+
+  transition:
+    transform 0.9s cubic-bezier(.19,.7,.22,1),
+    box-shadow 0.9s ease,
+    opacity 0.9s ease,
+    filter 0.9s ease;
+
+  animation: drift 16s ease-in-out infinite alternate;
+}
+
+/* hoverで手前にグイッと飛び出す */
+.chip:hover{
+  transform:
+    translateZ(220px)
+    scale(1.15)
+    rotateY(0deg)
+    rotateX(0deg);
+  box-shadow:
+    0 0 40px rgba(255,255,255,1),
+    0 24px 70px rgba(0,0,0,0.9);
+  opacity: 1;
+  filter: saturate(1.2);
+}
+
+/* ゆらゆら漂うアニメーション（ベース） */
+@keyframes drift{
+  0%   { transform: translateZ(0)   rotateY(-18deg) rotateX(6deg); }
+  50%  { transform: translateZ(-80px) rotateY(12deg) rotateX(-8deg); }
+  100% { transform: translateZ(-160px) rotateY(-10deg) rotateX(10deg); }
+}
+
+/* ===== 位置（バラバラに散らす） ===== */
+.c1  { top: 12%; left: 12%;  animation-duration: 18s; }
+.c2  { top: 8%;  left: 60%;  animation-duration: 22s; }
+.c3  { top: 26%; left: 78%;  animation-duration: 20s; }
+.c4  { top: 30%; left: 8%;   animation-duration: 19s; }
+.c5  { top: 40%; left: 70%;  animation-duration: 24s; }
+.c6  { top: 54%; left: 82%;  animation-duration: 21s; }
+.c7  { top: 56%; left: 12%;  animation-duration: 23s; }
+.c8  { top: 70%; left: 30%;  animation-duration: 18s; }
+.c9  { top: 74%; left: 60%;  animation-duration: 26s; }
+.c10 { top: 18%; left: 36%;  animation-duration: 17s; }
+.c11 { top: 50%; left: 44%;  animation-duration: 25s; }
+.c12 { top: 82%; left: 44%;  animation-duration: 22s; }
+
+/* ===== モバイル用ブレークポイント ===== */
+@media (max-width: 720px){
+  .scene{
+    align-items: flex-start;
+    padding: 12px 8px 24px;
+    perspective: 800px;
+  }
+
+  .center-copy{
+    margin-top: 52px;
+    max-width: 100%;
+  }
+
+  .center-copy h1{
+    font-size: clamp(22px, 7vw, 32px);
+  }
+
+  .center-copy p{
+    font-size: 13px;
+    max-width: 100%;
+  }
+
+  .chip{
+    font-size: 10px;
+    min-width: 100px;
+    padding: 6px 12px;
+  }
+
+  /* モバイルでは少しチップを間引く */
+  .c2, .c3{
+    display: none;
+  }
+}
