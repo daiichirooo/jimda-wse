@@ -1,4 +1,4 @@
-/* ===== ベース ===== */
+/* ===== base ===== */
 *{
   box-sizing: border-box;
   margin: 0;
@@ -12,16 +12,14 @@ html, body{
 body{
   min-height: 100vh;
   font-family: system-ui, -apple-system, "Open Sans", sans-serif;
+  background: radial-gradient(circle at top, #242424 0%, #020206 60%, #000 100%);
   color: #f5f5f5;
-  background:
-    radial-gradient(circle at top left, rgba(255,255,255,0.25), transparent 60%),
-    radial-gradient(circle at bottom right, rgba(0,0,0,0.9), #050509 80%);
   overflow: hidden;
 }
 
-/* ===== ナビ（flex） ===== */
+/* ===== nav (flex) ===== */
 .site-header{
-  padding: 14px 24px 6px;
+  padding: 14px 24px 4px;
   position: relative;
   z-index: 5;
 }
@@ -40,9 +38,9 @@ body{
   text-transform: uppercase;
   padding: 4px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.35);
   color: #f5f5f5;
-  background: rgba(5,5,12,0.6);
+  background: rgba(0,0,0,0.7);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   transition: background .25s ease, color .25s ease, border-color .25s ease;
@@ -50,7 +48,7 @@ body{
 
 .main-nav a:hover{
   background: #f5f5f5;
-  color: #15151d;
+  color: #111111;
   border-color: #f5f5f5;
 }
 
@@ -58,7 +56,7 @@ body{
   background: rgba(255,255,255,0.18);
 }
 
-/* ===== シーン（3D空間） ===== */
+/* ===== scene (flex) ===== */
 .scene{
   display: flex;                  /* flex② */
   align-items: center;
@@ -66,145 +64,154 @@ body{
   position: relative;
   min-height: calc(100vh - 60px);
   padding: 16px;
-  perspective: 1200px;            /* 3D の奥行き */
 }
 
-/* 中央テキスト */
-.center-copy{
+/* ===== BIG "NEWYORK" ===== */
+.word-wrapper{
   position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 420px;
-  padding: 16px;
+  z-index: 1;
 }
 
-.center-copy h1{
-  font-size: clamp(24px, 4vw, 40px);
-  letter-spacing: .22em;
+.word-stack{
+  position: relative;
+  font-size: clamp(3rem, 20vw, 9rem);  /* レスポンシブサイズ */
+  font-weight: 900;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  margin-bottom: 10px;
-  text-shadow:
-    0 0 18px rgba(0,0,0,0.9),
-    0 0 32px rgba(0,0,0,1);
+  line-height: 1;
+  mix-blend-mode: screen;
+  animation: floatWord 9s ease-in-out infinite alternate;
 }
 
-.center-copy p{
-  font-size: 14px;
-  line-height: 1.9;
-  letter-spacing: .03em;
-  max-width: 36ch;
-  margin: 0 auto;
-  color: #dfdfdf;
-  text-shadow:
-    0 0 12px rgba(0,0,0,0.85),
-    0 0 24px rgba(0,0,0,0.95);
+.word{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ===== 香りのチップ雲 ===== */
+/* ベース（うっすら白） */
+.word.base{
+  color: rgba(255,255,255,0.18);
+}
+
+/* カラフルな重なり（Bauhaus 風） */
+.word.layer{
+  opacity: 0.9;
+}
+
+.l1{
+  color: rgba(255, 208, 0, 0.85);       /* yellow */
+  transform: translate(-6px, -4px);
+}
+.l2{
+  color: rgba(255, 102, 0, 0.78);       /* orange */
+  transform: translate(8px, -3px);
+}
+.l3{
+  color: rgba(0, 160, 255, 0.80);       /* cyan */
+  transform: translate(-4px, 8px);
+}
+.l4{
+  color: rgba(180, 0, 255, 0.75);       /* magenta */
+  transform: translate(10px, 10px);
+}
+
+/* 全体をふわっと浮かせる */
+@keyframes floatWord{
+  0%   { transform: translateY(-6px); }
+  50%  { transform: translateY(4px); }
+  100% { transform: translateY(-2px); }
+}
+
+/* ===== scent cloud chips ===== */
 .cloud{
   position: absolute;
   inset: 0;
-  pointer-events: none;           /* 中央テキストをクリックできるように */
-  transform-style: preserve-3d;
+  pointer-events: none;           /* 後ろのテキストを邪魔しない */
+  z-index: 3;                     /* NEWYORK より前 */
 }
 
-/* 共通チップ */
+/* 共通スタイル */
 .chip{
   position: absolute;
-  min-width: 120px;
-  padding: 8px 16px;
+  min-width: clamp(120px, 18vw, 220px);
+  padding: 6px 14px;
   border-radius: 999px;
-  background: radial-gradient(circle at 20% 0%, #ffffff, #9bf0ff 45%, #3c6fe9 100%);
+  background: radial-gradient(circle at 20% 0%,
+             rgba(255,255,255,0.98),
+             rgba(255,255,255,0.08));
   box-shadow:
-    0 0 25px rgba(155,240,255,0.8),
-    0 12px 40px rgba(0,0,0,0.7);
-  color: #021220;
+    0 0 22px rgba(255,255,255,0.65),
+    0 10px 30px rgba(0,0,0,0.8);
+  color: #050511;
   font-size: 11px;
-  letter-spacing: .12em;
+  letter-spacing: .16em;
   text-transform: uppercase;
   text-align: center;
   white-space: nowrap;
 
   opacity: 0.9;
-  transform-style: preserve-3d;
-  transform-origin: center;
-
-  pointer-events: auto;           /* hoverできるように戻す */
+  pointer-events: auto;
 
   transition:
-    transform 0.9s cubic-bezier(.19,.7,.22,1),
-    box-shadow 0.9s ease,
-    opacity 0.9s ease,
-    filter 0.9s ease;
-
+    transform 0.8s cubic-bezier(.2,.7,.3,1),
+    box-shadow 0.8s ease,
+    opacity 0.8s ease,
+    filter 0.8s ease;
   animation: drift 16s ease-in-out infinite alternate;
 }
 
-/* hoverで手前にグイッと飛び出す */
+/* hover で少しだけ前に＆光る */
 .chip:hover{
-  transform:
-    translateZ(220px)
-    scale(1.15)
-    rotateY(0deg)
-    rotateX(0deg);
+  transform: translateY(-8px) scale(1.05);
   box-shadow:
-    0 0 40px rgba(255,255,255,1),
-    0 24px 70px rgba(0,0,0,0.9);
+    0 0 32px rgba(255,255,255,1),
+    0 20px 60px rgba(0,0,0,0.95);
   opacity: 1;
   filter: saturate(1.2);
 }
 
-/* ゆらゆら漂うアニメーション（ベース） */
+/* ゆらゆら漂うアニメーション */
 @keyframes drift{
-  0%   { transform: translateZ(0)   rotateY(-18deg) rotateX(6deg); }
-  50%  { transform: translateZ(-80px) rotateY(12deg) rotateX(-8deg); }
-  100% { transform: translateZ(-160px) rotateY(-10deg) rotateX(10deg); }
+  0%   { transform: translateY(0px) translateX(0px); }
+  50%  { transform: translateY(-10px) translateX(8px); }
+  100% { transform: translateY(4px) translateX(-12px); }
 }
 
-/* ===== 位置（バラバラに散らす） ===== */
-.c1  { top: 12%; left: 12%;  animation-duration: 18s; }
-.c2  { top: 8%;  left: 60%;  animation-duration: 22s; }
-.c3  { top: 26%; left: 78%;  animation-duration: 20s; }
-.c4  { top: 30%; left: 8%;   animation-duration: 19s; }
-.c5  { top: 40%; left: 70%;  animation-duration: 24s; }
-.c6  { top: 54%; left: 82%;  animation-duration: 21s; }
-.c7  { top: 56%; left: 12%;  animation-duration: 23s; }
-.c8  { top: 70%; left: 30%;  animation-duration: 18s; }
-.c9  { top: 74%; left: 60%;  animation-duration: 26s; }
-.c10 { top: 18%; left: 36%;  animation-duration: 17s; }
-.c11 { top: 50%; left: 44%;  animation-duration: 25s; }
-.c12 { top: 82%; left: 44%;  animation-duration: 22s; }
+/* 位置をばらして雲っぽく */
+.c1  { top: 14%; left: 14%;  animation-duration: 18s; }
+.c2  { top: 10%; left: 65%;  animation-duration: 21s; }
+.c3  { top: 26%; left: 80%;  animation-duration: 19s; }
+.c4  { top: 30%; left: 5%;   animation-duration: 22s; }
+.c5  { top: 46%; left: 78%;  animation-duration: 24s; }
+.c6  { top: 54%; left: 12%;  animation-duration: 20s; }
+.c7  { top: 66%; left: 32%;  animation-duration: 23s; }
+.c8  { top: 68%; left: 60%;  animation-duration: 17s; }
+.c9  { top: 18%; left: 38%;  animation-duration: 25s; }
+.c10 { top: 80%; left: 44%;  animation-duration: 19s; }
 
-/* ===== モバイル用ブレークポイント ===== */
+/* ===== mobile breakpoint ===== */
 @media (max-width: 720px){
   .scene{
-    align-items: flex-start;
-    padding: 12px 8px 24px;
-    perspective: 800px;
+    align-items: center;
+    padding: 10px 6px 24px;
   }
 
-  .center-copy{
-    margin-top: 52px;
-    max-width: 100%;
-  }
-
-  .center-copy h1{
-    font-size: clamp(22px, 7vw, 32px);
-  }
-
-  .center-copy p{
-    font-size: 13px;
-    max-width: 100%;
+  .word-stack{
+    font-size: clamp(2.4rem, 18vw, 3.4rem);
+    letter-spacing: .08em;
   }
 
   .chip{
     font-size: 10px;
-    min-width: 100px;
-    padding: 6px 12px;
+    min-width: clamp(100px, 40vw, 160px);
+    padding: 5px 10px;
   }
 
-  /* モバイルでは少しチップを間引く */
-  .c2, .c3{
+  /* スマホでは少しチップ間引き */
+  .c3, .c5{
     display: none;
   }
 }
