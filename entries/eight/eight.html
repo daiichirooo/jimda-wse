@@ -3,49 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eight</title>
-    <link rel="stylesheet" href="eight.css"/>
+    <title>test</title>
+    <link rel="stylesheet" href="test.css"/>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="main-nav">
-      <a href="../index.html">Home</a>
-      <a href="../one/one.html">One</a>
-      <a href="../two/two.html">Two</a>
-      <a href="../three/three.html">Three</a>
-      <a href="../four/four.html">Four</a>
-      <a href="../five/five.html">Five</a>
-      <a href="../six/six.html">Six</a>
-      <a href="../seven/seven.html">Seven</a>
-      <a href="./eight.html" aria-current="page">Eight</a>
-    </nav>
-  </header>
+    <header class="site-header">
+        <nav class="main-nav">
 
-  <main class="scene">
-    <!-- 巨大な NEWYORK（重なり合うレイヤー） -->
-    <section class="word-wrapper" aria-label="New York">
-      <div class="word-stack">
-        <span class="word base">NEWYORK</span>
-        <span class="word layer l1">NEWYORK</span>
-        <span class="word layer l2">NEWYORK</span>
-        <span class="word layer l3">NEWYORK</span>
-        <span class="word layer l4">NEWYORK</span>
-      </div>
-    </section>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
 
-    <!-- 匂いクラウド -->
+            <label for="nav-toggle" class="nav-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="../one/one.html">One</a>
+                <a href="../two/two.html">Two</a>
+                <a href="../three/three.html">Three</a>
+                <a href="../four/four.html">Four</a>
+                <a href="../five/five.html">Five</a>
+                <a href="../six/six.html">Six</a>
+                <a href="../seven/seven.html">Seven</a>
+                <a href="./eight.html" aria-current="page">Eight</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="scene">
+        <section class="word-wrapper" aria-label="Manhattan">
+            <div>
+                <span class="word base">MANHATTAN</span>
+                <span class="word layer l1">MANHATTAN</span>
+                <span class="word layer l2">MANHATTAN</span>
+                <span class="word layer l3">MANHATTAN</span>
+                <span class="word layer l4">MANHATTAN</span>
+            </div>
+        </section>
+    </main>
+
     <section class="cloud" aria-label="smells of the city">
-      <div class="chip c1">street steam</div>
-      <div class="chip c2">pretzel carts</div>
-      <div class="chip c3">subway metal</div>
-      <div class="chip c4">trash day</div>
-      <div class="chip c5">rain on asphalt</div>
-      <div class="chip c6">coffee breath</div>
-      <div class="chip c7">late-night pizza</div>
-      <div class="chip c8">perfume cloud</div>
-      <div class="chip c9">laundry vent</div>
-      <div class="chip c10">exhaust & fog</div>
+        <div class="chip c1">street steam</div>
+        <div class="chip c2">pretzel carts</div>
+        <div class="chip c3">subway metal</div>
+        <div class="chip c4">trash day</div>
+        <div class="chip c5">rain on asphalt</div>
+        <div class="chip c6">coffee breath</div>
+        <div class="chip c7">late-night pizza</div>
+        <div class="chip c8">perfume cloud</div>
+        <div class="chip c9">laundry vent</div>
+        <div class="chip c10">exhaust & fog</div>
     </section>
-  </main>
+
 </body>
 </html>
