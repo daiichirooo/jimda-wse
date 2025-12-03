@@ -7,6 +7,45 @@
     <link rel="stylesheet" href="ten.css">
 </head>
 <body>
-    
+
+
+  <div class="intro-overlay" id="intro">
+    <div class="intro-box">
+      <p>
+        Breathe in the scent of Japanese food.<br>
+        Click each dish and watch the flavors appear.
+      </p>
+    </div>
+  </div>
+
+
+  <img class="bg" src="../imgs/j_food.png"
+       alt="A table full of Japanese dishes: sushi, miso soup, udon and more.">
+
+  <main class="stage">
+
+    <section class="hotspots" aria-label="Japanese dishes">
+      <button class="dish-btn miso"      data-dish="miso"      aria-label="miso soup"></button>
+      <button class="dish-btn sushi"     data-dish="sushi"     aria-label="assorted sushi"></button>
+      <button class="dish-btn udon"      data-dish="udon"      aria-label="udon noodles"></button>
+      <button class="dish-btn yakitori"  data-dish="yakitori"  aria-label="yakitori skewers"></button>
+      <button class="dish-btn tamago"    data-dish="tamago"    aria-label="tamagoyaki omelette"></button>
+      <button class="dish-btn shogayaki" data-dish="shogayaki" aria-label="ginger pork"></button>
+      <button class="dish-btn inari"     data-dish="inari"     aria-label="inari sushi"></button>
+      <button class="dish-btn edamame"   data-dish="edamame"   aria-label="edamame beans"></button>
+      <button class="dish-btn gyoza"     data-dish="gyoza"     aria-label="gyoza dumplings"></button>
+      <button class="dish-btn rice"      data-dish="rice"      aria-label="steamed rice"></button>
+      <button class="dish-btn oyakodon"  data-dish="oyakodon"  aria-label="oyakodon rice bowl"></button>
+      <button class="dish-btn onigiri"   data-dish="onigiri"   aria-label="onigiri rice balls"></button>
+    </section>
+
+
+    <section class="center-display" aria-live="polite">
+      <h2 class="dish-name" id="dishName"></h2>
+      <div class="bubbles" id="bubbles"></div>
+    </section>
+  </main>
+
+  <script src="ten.js" defer></script>
 </body>
 </html>
