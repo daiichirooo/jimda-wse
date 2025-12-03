@@ -1,0 +1,195 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body{
+  height: 100%;
+}
+
+
+body{
+  --bg1: #ffffff;
+
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  background: radial-gradient(circle at top, var(--bg1) 0%);
+  color: #111;
+  overflow: hidden;
+  transition: background 3s ease;
+}
+
+
+body.city-default{
+  --bg1: #ffffff;
+  color: #111;
+}
+
+
+body.city-newyork{
+  --bg1: rgba(230, 180, 170, 1);
+  color: #fdfdfd;
+}
+body.city-tokyo{
+  --bg1: rgba(230,230,235,1);
+  color: #fdfdfd;
+}
+body.city-barcelona{
+  --bg1: rgba(255,204,170,1);
+  color: #fdfdfd;
+}
+body.city-auckland{
+  --bg1: rgba(200,245,225,1);
+  color: #fdfdfd;
+}
+
+
+.scene{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;     
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+
+
+.title{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: clamp(3rem, 14vw, 6rem);   
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+
+.city-ring{
+  position: relative;
+  width: min(800px, 80vw);
+  height: min(420px, 80vw);
+}
+
+
+.city-btn{
+  position: absolute;
+  padding: 1.2rem 1.5rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  color: #111;
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+
+.city-btn[data-city="newyork"]{
+  top: 10%;
+  left: 10%;
+  background: rgba(230, 180, 170, 1);
+  border: 0.1px solid rgba(230, 180, 170, 1);
+}
+.city-btn[data-city="tokyo"]{
+  top: 10%;
+  right: 10%;
+  background: rgba(230,230,235,1);
+  border: 0.1px solid rgba(230,230,235,1);
+}
+.city-btn[data-city="barcelona"]{
+  bottom:10%;
+  left: 10%;
+  background: rgba(255,204,170,1);
+  border: 0.1px solid rgba(255,204,170,1);
+}
+.city-btn[data-city="auckland"]{
+  bottom: 10%;
+  right: 10%;
+  background: rgba(200,245,225,1);
+  border: 0.1px solid rgba(200,245,225,1);
+}
+
+
+.city-btn:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+}
+
+.city-btn.active{
+  transform: translateY(-4px) scale(1.35);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+  font-weight: 700;
+}
+
+
+
+.cloud{
+  position: fixed;
+  inset: 0;
+  pointer-events: none; 
+}
+
+
+.word{
+  position: absolute;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  opacity: 0;
+  text-shadow:
+    0 0 12px rgba(0,0,0,0.9),
+    0 0 22px rgba(0,0,0,0.9);
+  white-space: nowrap;
+
+  transform: translate(-50%, -50%) scale(0.6) translateY(10px);
+  animation:
+    word-pop 0.9s cubic-bezier(.2,.7,.3,1) forwards,
+    word-float 7s ease-in-out infinite alternate;
+}
+
+
+@keyframes word-pop{
+  0%{
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6) translateY(10px);
+  }
+  60%{
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05) translateY(0);
+  }
+  100%{
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) translateY(0);
+  }
+}
+
+
+@keyframes word-float{
+  from{
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  to{
+    transform: translate(-50%, -50%) translateY(-8px);
+  }
+}
+
+
+@media (max-width: 700px){
+  .scene{
+    gap: 2.4rem;
+  }
+  .city-ring{
+    width: min(320px, 90vw);
+    height: min(320px, 90vw);
+  }
+}
