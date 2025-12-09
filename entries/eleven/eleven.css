@@ -10,40 +10,28 @@ html, body{
 
 body{
   font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  background: #ffffff;
-  overflow: hidden;           /* スクロールしない */
+  background: url("../imgs/Artboard 2.png") center bottom / cover no-repeat;
+  overflow: hidden;     /* スクロールしない */
 }
-
 /* 全体シーン */
 .scene{
-  height: 100vh;
-  display: flex;              /* Flex 条件クリア */
-  align-items: center;
-  justify-content: center;
-}
-
-/* レーン全体 */
-.belt{
   position: relative;
-  width: min(1100px, 100vw);
-  height: 260px;
+  height: 100vh;
 }
 
-/* レーン（ベルトコンベア） */
-.belt-track{
+/* レーン全体：イラストのグレー部分にかぶるように調整 */
+.belt{
   position: absolute;
   left: 0;
   right: 0;
-  top: 35%;
-  height: 40%;
-  background: linear-gradient(#f3e3a5, #e6d184);
-  border-radius: 40px;
-  box-shadow:
-    0 16px 30px rgba(0,0,0,.15),
-    0 0 0 4px rgba(0,0,0,.02);
+  /* ここは画面の高さに対する位置。微調整してOK */
+  top: 52%;              /* グレーの帯の中央くらいに合わせる */
+  height: 18%;           /* レーンの厚みに合わせて調整 */
+  z-index: 1;
 }
 
-/* 寿司が流れる帯 */
+
+
 .sushi-stream{
   position: absolute;
   left: 0;
@@ -51,175 +39,88 @@ body{
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 40px;
-  padding-inline: 40px;
-  animation: move-belt 18s linear infinite;
+  gap: clamp(90px, 10vw, 140px);   /* 間隔ひろめ */
+  padding-inline: clamp(160px, 12vw, 220px);
+  animation: move-belt 22s linear infinite;
 }
 
-/* アニメ停止用（JSで body に .paused を付ける） */
+/* ポーズ用クラス（クリック表示中は止めたい場合） */
 body.paused .sushi-stream{
   animation-play-state: paused;
 }
 
-/* ベルトを右→左へ流す */
 @keyframes move-belt{
-  from{
-    transform: translateX(0);
-  }
-  to{
-    transform: translateX(-50%);
-  }
+  from{ transform: translateX(0); }
+  to  { transform: translateX(-50%); }
 }
 
-/* 寿司ボタン（見た目は画像だけ） */
 .sushi{
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  transform: translateY(-8px);  /* ちょっとだけ浮かせる */
+  transform: translateY(-8px);     /* レーン中心からちょっと浮かせる */
 }
 
 .sushi img{
   display: block;
-  width: 140px;                 /* ここは画像に合わせて調整可 */
-  filter: drop-shadow(0 12px 14px rgba(0,0,0,.25));
-  transition: transform .25s ease;
+  width: 150px;                    /* 画像サイズに合わせて調整してOK */
+  filter: drop-shadow(0 12px 16px rgba(0,0,0,.3));
+  transition: transform .25s ease, filter .25s ease;
 }
 
 .sushi:hover img{
-  transform: translateY(-6px) scale(1.05);
+  transform: translateY(-10px) scale(1.05);
+  filter: drop-shadow(0 18px 22px rgba(0,0,0,.35));
 }
 
-/* ====== クリック時のオーバーレイ ====== */
-
-.info-overlay{
+/* 左上の空いている壁スペースに文字を置く */
+.info-panel{
   position: fixed;
-  inset: 0;
-  background: rgba(255,255,255,0.88);
-  opacity: 0;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity .4s ease;
-  z-index: 5;
+  top: 10%;          /* 好みで微調整：壁の余白に合わせて */
+  left: 8%;
+  color: #4a351c;    /* 濃い茶色（壁色に合うように） */
+  max-width: 260px;
+  line-height: 1.7;
+  z-index: 2;
 }
 
-.info-overlay.active{
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.info-inner{
-  position: relative;
-  padding: 2rem 2.6rem;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.96);
-  box-shadow: 0 24px 60px rgba(0,0,0,.25);
-  min-width: min(520px, 90vw);
-  min-height: 320px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-/* 閉じるボタン */
-.close-info{
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  border: none;
-  background: transparent;
-  font-size: 1.5rem;
-  cursor: pointer;
-  opacity: .6;
-  transition: opacity .2s, transform .2s;
-}
-.close-info:hover{
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-/* 真ん中の大きい寿司 */
-.plate-large img{
-  width: 180px;
-  filter: drop-shadow(0 16px 22px rgba(0,0,0,.3));
-}
-
-/* 寿司名 */
-.info-name{
+/* ネタ名 */
+.info-title{
   font-size: 1.4rem;
   letter-spacing: .18em;
   text-transform: uppercase;
-  text-align: center;
+  margin-bottom: 0.4rem;
 }
 
-/* 匂いワードのレイヤー */
-.smell-bubbles{
-  position: relative;
-  width: 100%;
-  height: 180px;
+/* 匂いワードを小さなタグっぽく */
+.info-smells{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.5rem;
 }
 
-/* 匂いワードのバブル */
-.bubble{
-  position: absolute;
-  padding: 0.4rem 0.9rem;
+.info-chip{
+  font-size: 0.75rem;
+  letter-spacing: .06em;
+  text-transform: lowercase;
+  padding: 0.12rem 0.45rem;
   border-radius: 999px;
-  background: rgba(0,0,0,0.85);
-  color: #fff;
-  font-size: 0.8rem;
-  letter-spacing: .04em;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(.8);
-  box-shadow: 0 12px 20px rgba(0,0,0,.35);
-  animation:
-    bubble-in .5s cubic-bezier(.2,.8,.3,1) forwards,
-    bubble-float 3s ease-in-out infinite alternate;
+  background: rgba(255,255,255,0.65);    /* 強い白ボックスじゃなく、うっすら */
+  box-shadow: 0 4px 8px rgba(0,0,0,.08);
 }
 
-/* 出現アニメ */
-@keyframes bubble-in{
-  from{
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(.5);
-  }
-  to{
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-/* ふわふわ漂う */
-@keyframes bubble-float{
-  from{ transform: translate(-50%, -50%) translateY(0); }
-  to  { transform: translate(-50%, -50%) translateY(-10px); }
-}
-
-/* 消える用クラス（JSで付ける） */
-.bubble.fade-out{
-  animation:
-    bubble-out .5s ease forwards;
-}
-
-@keyframes bubble-out{
-  to{
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(.8) translateY(10px);
-  }
-}
-
-/* タイトルもフェードアウト */
-.info-name{
+/* ふわっと出てふわっと消える */
+.info-panel{
   opacity: 1;
-  transition: opacity .5s ease;
+  transition: opacity .45s ease;
 }
-.info-name.fade-out{
+.info-panel.fade-out{
   opacity: 0;
 }
+
+
+
 
 /* ====== レスポンシブ（スマホ） ====== */
 @media (max-width: 800px){

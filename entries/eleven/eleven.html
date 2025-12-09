@@ -11,8 +11,11 @@
 <body>
 
   <main class="scene">
-    <div class="belt">
-      <div class="belt-track"></div>
+
+    <section class="info-panel" aria-live="polite">
+      <h2 id="infoName" class="info-title"></h2>
+      <div id="infoSmells" class="info-smells"></div>
+    </section>
 
       <div class="sushi-stream">
         <!-- set1 -->
@@ -135,23 +138,11 @@
           <img src="../imgs/s14.png" alt="hand roll">
         </button>
       </div>
-    </div>
 
 
-    <section class="info-overlay" id="infoOverlay" aria-live="polite">
-      <div class="info-inner">
-        <button class="close-info" aria-label="close">×</button>
-        <div class="plate-large">
-          <img id="infoImg" src="" alt="">
-        </div>
-        <h2 class="info-name" id="infoName"></h2>
-        <div class="smell-bubbles" id="smellBubbles"></div>
-      </div>
-    </section>
+
   </main>
 
-  <script src="main.js'
-  
-  " defer></script>
+  <script src="main.js" defer></script>
 </body>
 </html>
