@@ -11,22 +11,22 @@ html, body{
 body{
   font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
   background: url("../imgs/Artboard 2.png") center bottom / cover no-repeat;
-  overflow: hidden;     /* スクロールしない */
+  overflow: hidden;     
 }
-/* 全体シーン */
+
 .scene{
   position: relative;
   height: 100vh;
 }
 
-/* レーン全体：イラストのグレー部分にかぶるように調整 */
+
 .belt{
   position: absolute;
   left: 0;
   right: 0;
-  /* ここは画面の高さに対する位置。微調整してOK */
-  top: 52%;              /* グレーの帯の中央くらいに合わせる */
-  height: 18%;           /* レーンの厚みに合わせて調整 */
+
+  top: 44%;             
+  height: 25%;         
   z-index: 1;
 }
 
@@ -39,12 +39,12 @@ body{
   height: 100%;
   display: flex;
   align-items: center;
-  gap: clamp(90px, 10vw, 140px);   /* 間隔ひろめ */
+  gap: clamp(90px, 10vw, 140px); 
   padding-inline: clamp(160px, 12vw, 220px);
   animation: move-belt 22s linear infinite;
 }
 
-/* ポーズ用クラス（クリック表示中は止めたい場合） */
+
 body.paused .sushi-stream{
   animation-play-state: paused;
 }
@@ -55,45 +55,69 @@ body.paused .sushi-stream{
 }
 
 .sushi{
+  position: relative;           
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  transform: translateY(-8px);     /* レーン中心からちょっと浮かせる */
+  transform: translateY(-8px);
 }
 
+
+.sushi .plate{
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 190px;     
+  height: 70px;      
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.7), transparent 70%),
+    #f3f8ff;
+  box-shadow:
+    0 8px 12px rgba(0,0,0,.25),
+    0 0 0 3px rgba(255,255,255,0.9);
+  z-index: 0;
+}
+
+
 .sushi img{
+  position: relative;
+  z-index: 1;
   display: block;
-  width: 150px;                    /* 画像サイズに合わせて調整してOK */
-  filter: drop-shadow(0 12px 16px rgba(0,0,0,.3));
+  width: 140px;   
+  transform: translateY(-18px);
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.25));
   transition: transform .25s ease, filter .25s ease;
 }
 
 .sushi:hover img{
-  transform: translateY(-10px) scale(1.05);
-  filter: drop-shadow(0 18px 22px rgba(0,0,0,.35));
+  transform: translateY(-20px) scale(1.05);
+  filter: drop-shadow(0 16px 20px rgba(0,0,0,.3));
 }
 
-/* 左上の空いている壁スペースに文字を置く */
+
 .info-panel{
   position: fixed;
-  top: 10%;          /* 好みで微調整：壁の余白に合わせて */
+  top: 10%;       
   left: 8%;
-  color: #4a351c;    /* 濃い茶色（壁色に合うように） */
+  color: #4a351c;   
   max-width: 260px;
   line-height: 1.7;
   z-index: 2;
 }
 
-/* ネタ名 */
+
 .info-title{
-  font-size: 1.4rem;
+  font-size: 3rem;
   letter-spacing: .18em;
   text-transform: uppercase;
   margin-bottom: 0.4rem;
 }
 
-/* 匂いワードを小さなタグっぽく */
+
 .info-smells{
   display: flex;
   flex-wrap: wrap;
@@ -106,11 +130,11 @@ body.paused .sushi-stream{
   text-transform: lowercase;
   padding: 0.12rem 0.45rem;
   border-radius: 999px;
-  background: rgba(255,255,255,0.65);    /* 強い白ボックスじゃなく、うっすら */
+  background: rgba(255,255,255,0.65);  
   box-shadow: 0 4px 8px rgba(0,0,0,.08);
 }
 
-/* ふわっと出てふわっと消える */
+
 .info-panel{
   opacity: 1;
   transition: opacity .45s ease;
@@ -122,7 +146,7 @@ body.paused .sushi-stream{
 
 
 
-/* ====== レスポンシブ（スマホ） ====== */
+
 @media (max-width: 800px){
   .belt{
     height: 220px;

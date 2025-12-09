@@ -14,22 +14,21 @@ sushiBtns.forEach(btn => {
 });
 
 function showInfo(name, words){
-  // ベルトを一旦停止したい場合
+
   document.body.classList.add("paused");
 
-  // 前回のタイマーがあればキャンセル
+
   if (hideTimer){
     clearTimeout(hideTimer);
     hideTimer = null;
   }
 
-  // フェードアウト状態なら戻す
   infoPanel.classList.remove("fade-out");
 
-  // タイトル
+
   infoName.textContent = name;
 
-  // 匂いワードをタグとして並べる
+
   infoSmells.innerHTML = "";
   const maxWords = Math.min(words.length, 7);
 
@@ -40,7 +39,7 @@ function showInfo(name, words){
     infoSmells.appendChild(chip);
   }
 
-  // 3秒後にふわっと消してベルト再開
+
   hideTimer = setTimeout(() => {
     infoPanel.classList.add("fade-out");
 
@@ -49,6 +48,6 @@ function showInfo(name, words){
       infoSmells.innerHTML = "";
       infoPanel.classList.remove("fade-out");
       document.body.classList.remove("paused");
-    }, 500); // フェード時間よりちょい長め
+    }, 500);
   }, 3000);
 }
