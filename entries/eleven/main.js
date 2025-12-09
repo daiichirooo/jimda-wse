@@ -51,3 +51,7 @@ function showInfo(name, words){
     }, 500);
   }, 3000);
 }
+
+
+
+
