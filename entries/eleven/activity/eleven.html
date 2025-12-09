@@ -10,15 +10,148 @@
 
 <body>
 
-  <div class="wrapper">
-    <section>
-      <h1>Hello!</h1>
-    </section>
-    <section>
-      <h1>It's November Twenty-Fifth</h1>
-    </section>
-  </div>
-  <script src="main.js" type="text/javascript"></script>
+  <main class="scene">
+    <div class="belt">
+      <div class="belt-track"></div>
 
+      <div class="sushi-stream">
+        <!-- set1 -->
+        <button class="sushi" data-name="salmon" data-img="../imgs/s1.jpg"
+          data-words="ocean breeze, fatty, glossy, soy sauce, warm rice">
+          <img src="../imgs/s1.jpg" alt="salmon nigiri">
+        </button>
+        <button class="sushi" data-name="tuna" data-img="../imgs/s2.jpg"
+          data-words="deep red, clean, meaty, cool, umami">
+          <img src="../imgs/s2.jpg" alt="tuna nigiri">
+        </button>
+        <button class="sushi" data-name="yellowtail" data-img="../imgs/s3.jpg"
+          data-words="buttery, mild, fresh, soft edges">
+          <img src="../imgs/s3.jpg" alt="yellowtail nigiri">
+        </button>
+        <button class="sushi" data-name="salmon roe" data-img="../imgs/s4.jpg"
+          data-words="briny pop, sea air, cold glass">
+          <img src="../imgs/s4.jpg" alt="ikura nigiri">
+        </button>
+        <button class="sushi" data-name="tamago" data-img="../imgs/s5.jpg"
+          data-words="sweet egg, pan heat, sugar, dashi">
+          <img src="../imgs/s5.jpg" alt="tamago nigiri">
+        </button>
+        <button class="sushi" data-name="shrimp" data-img="../imgs/s6.jpg"
+          data-words="shellfish, boiled sweetness, chilled">
+          <img src="../imgs/s6.jpg" alt="ebi nigiri">
+        </button>
+        <button class="sushi" data-name="eel" data-img="../imgs/s7.jpg"
+          data-words="grilled tare, smoke, caramel soy">
+          <img src="../imgs/s7.jpg" alt="unagi nigiri">
+        </button>
+
+        <button class="sushi" data-name="mackerel" data-img="../imgs/s8.jpg"
+          data-words="vinegar, silver skin, sharp sea">
+          <img src="../imgs/s8.jpg" alt="mackerel nigiri">
+        </button>
+        <button class="sushi" data-name="octopus" data-img="../imgs/s9.jpg"
+          data-words="clean, firm, light ocean">
+          <img src="../imgs/s9.jpg" alt="octopus nigiri">
+        </button>
+        <button class="sushi" data-name="squid" data-img="../imgs/s10.jpg"
+          data-words="soft chew, subtle sweet, cool">
+          <img src="../imgs/s10.jpg" alt="squid nigiri">
+        </button>
+        <button class="sushi" data-name="toro" data-img="../imgs/s11.jpg"
+          data-words="melted fat, rich, creamy sea">
+          <img src="../imgs/s11.jpg" alt="toro nigiri">
+        </button>
+        <button class="sushi" data-name="roll" data-img="../imgs/s12.jpg"
+          data-words="nori, cucumber, sesame, rice">
+          <img src="../imgs/s12.jpg" alt="sushi roll">
+        </button>
+        <button class="sushi" data-name="inari" data-img="../imgs/s13.jpg"
+          data-words="sweet tofu, fried oil, soy">
+          <img src="../imgs/s13.jpg" alt="inari sushi">
+        </button>
+        <button class="sushi" data-name="hand roll" data-img="../imgs/s14.jpg"
+          data-words="cone nori, crispy, fresh filling">
+          <img src="../imgs/s14.jpg" alt="hand roll">
+        </button>
+
+        <!-- set2: 無限ループ用に同じ順番をコピー -->
+        <!-- 実際には上の14個をそのままコピペでOK（dataだけ同じ） -->
+        <!-- ここでは省略せずそのまま複製しておく -->
+        <button class="sushi" data-name="salmon" data-img="../imgs/s1.jpg"
+          data-words="ocean breeze, fatty, glossy, soy sauce, warm rice">
+          <img src="../imgs/s1.jpg" alt="salmon nigiri">
+        </button>
+        <button class="sushi" data-name="tuna" data-img="../imgs/s2.jpg"
+          data-words="deep red, clean, meaty, cool, umami">
+          <img src="../imgs/s2.jpg" alt="tuna nigiri">
+        </button>
+        <button class="sushi" data-name="yellowtail" data-img="../imgs/s3.jpg"
+          data-words="buttery, mild, fresh, soft edges">
+          <img src="../imgs/s3.jpg" alt="yellowtail nigiri">
+        </button>
+        <button class="sushi" data-name="salmon roe" data-img="../imgs/s4.jpg"
+          data-words="briny pop, sea air, cold glass">
+          <img src="../imgs/s4.jpg" alt="ikura nigiri">
+        </button>
+        <button class="sushi" data-name="tamago" data-img="../imgs/s5.jpg"
+          data-words="sweet egg, pan heat, sugar, dashi">
+          <img src="../imgs/s5.jpg" alt="tamago nigiri">
+        </button>
+        <button class="sushi" data-name="shrimp" data-img="../imgs/s6.jpg"
+          data-words="shellfish, boiled sweetness, chilled">
+          <img src="../imgs/s6.jpg" alt="ebi nigiri">
+        </button>
+        <button class="sushi" data-name="eel" data-img="../imgs/s7.jpg"
+          data-words="grilled tare, smoke, caramel soy">
+          <img src="../imgs/s7.jpg" alt="unagi nigiri">
+        </button>
+
+        <button class="sushi" data-name="mackerel" data-img="../imgs/s8.jpg"
+          data-words="vinegar, silver skin, sharp sea">
+          <img src="../imgs/s8.jpg" alt="mackerel nigiri">
+        </button>
+        <button class="sushi" data-name="octopus" data-img="../imgs/s9.jpg"
+          data-words="clean, firm, light ocean">
+          <img src="../imgs/s9.jpg" alt="octopus nigiri">
+        </button>
+        <button class="sushi" data-name="squid" data-img="../imgs/s10.jpg"
+          data-words="soft chew, subtle sweet, cool">
+          <img src="../imgs/s10.jpg" alt="squid nigiri">
+        </button>
+        <button class="sushi" data-name="toro" data-img="../imgs/s11.jpg"
+          data-words="melted fat, rich, creamy sea">
+          <img src="../imgs/s11.jpg" alt="toro nigiri">
+        </button>
+        <button class="sushi" data-name="roll" data-img="../imgs/s12.jpg"
+          data-words="nori, cucumber, sesame, rice">
+          <img src="../imgs/s12.jpg" alt="sushi roll">
+        </button>
+        <button class="sushi" data-name="inari" data-img="../imgs/s13.jpg"
+          data-words="sweet tofu, fried oil, soy">
+          <img src="../imgs/s13.jpg" alt="inari sushi">
+        </button>
+        <button class="sushi" data-name="hand roll" data-img="../imgs/s14.jpg"
+          data-words="cone nori, crispy, fresh filling">
+          <img src="../imgs/s14.jpg" alt="hand roll">
+        </button>
+      </div>
+    </div>
+
+
+    <section class="info-overlay" id="infoOverlay" aria-live="polite">
+      <div class="info-inner">
+        <button class="close-info" aria-label="close">×</button>
+        <div class="plate-large">
+          <img id="infoImg" src="" alt="">
+        </div>
+        <h2 class="info-name" id="infoName"></h2>
+        <div class="smell-bubbles" id="smellBubbles"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js'
+  
+  " defer></script>
 </body>
 </html>
