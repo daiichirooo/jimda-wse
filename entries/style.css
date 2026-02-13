@@ -22,7 +22,7 @@ body{
 
 
 .main-nav{
-  display: flex;                      /* ← flex レイアウト */
+  display: flex;                     
   justify-content: center;
   flex-wrap: wrap;
   gap: 16px;
